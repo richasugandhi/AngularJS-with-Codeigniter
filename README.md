@@ -22,7 +22,7 @@ class Welcome extends CI_Controller {
 
 
 
-
+## index.php call in 1st controller
 2) AngularjS page of controller
 
 class Templates extends CI_Controller {
@@ -40,6 +40,27 @@ class Templates extends CI_Controller {
 }
 
 
+## add template controller on route.php
+$route['templates/(:any)'] = "templates/view/$1";
 
 
-## index.php call in 1st controller
+## create app folder
+1)Create app.js
+
+var app =  angular.module('angularApp',['ngRoute','ngSanitize','ngAnimate','datatables','ui.bootstrap.modal','ui.bootstrap','720kb.tooltips','720kb.datepicker']);
+
+app.config(['$routeProvider',
+    function($routeProvider,$sceDelegateProvider) { 
+        $routeProvider.
+       		when('/', {
+                templateUrl: 'templates/dashboard.html', 
+                controller: 'dashboardController'               
+            })
+	    }]);
+	    
+
+2) Create Controller using angular js on controller folder
+app.controller('dashboardController', function(Page,$scope,$http) {
+});
+
+
